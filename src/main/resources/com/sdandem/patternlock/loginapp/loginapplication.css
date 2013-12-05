@@ -1,3 +1,21 @@
+/* **************************************************************************
+ *
+ * PatternLockControl customization.
+ *
+ * ************************************************************************** */
+.pattern-lock{
+	-fx-background-color:transparent;
+}
+
+.pattern-lock .inner-circle{
+	-fx-stroke:#444444;
+}
+
+/* **************************************************************************
+ *
+ * Login Application Styling.
+ *
+ * ************************************************************************** */
 .base{
 	-fx-background-color:radial-gradient(focus-angle 0deg , focus-distance 0% , center 29% 32% , radius 78% , #5D7BB9, #133A88);
 }
@@ -22,6 +40,7 @@
 	-fx-graphic:url("../../../../images/register_64.png");
 	-fx-graphic-text-gap:20px;
 }
+
 .login{
 	-fx-font-family: 'Arial';
 	-fx-font-weight: bold;
@@ -41,11 +60,14 @@
 	-fx-text-fill: #DDDDDD !important;
 }
 
-
 .formLabel{
 	-fx-fill: white !important;
 	-fx-text-fill: white !important;
 	-fx-font-weight: bold;
+}
+
+.error{
+	-fx-background-color: -fx-shadow-highlight-color, red, -fx-control-inner-background;
 }
 
 .tick{
@@ -57,14 +79,4 @@
 .refresh{
 	-fx-graphic:url("../../../../images/refresh.png");
 }
-.pattern-lock{
-	-fx-background-color:transparent;
-}
 
-.pattern-lock .inner{
-	-fx-stroke:#444444;
-}
-
-.error{
-	-fx-background-color: -fx-shadow-highlight-color, red, -fx-control-inner-background;
-}

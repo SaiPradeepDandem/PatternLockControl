@@ -1,5 +1,7 @@
 package com.sdandem.patternlock.loginapp;
 
+import com.sdandem.patternlock.PatternLockControl;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,14 +21,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+/**
+ * Demo application to check the functionality of {@link PatternLockControl}.
+ */
 public class LoginApplication extends Application {
 
 	Stage stage;
 	Scene scene;
 	StackPane contentRoot;
 	private final Label successlbl = LabelBuilder.create().text("Login Successfull !!").styleClass("login-success").build();
-	private final Button reset = ButtonBuilder.create().text("Reset").styleClass("refresh").build();
-	
+	private final Button resetBtn = ButtonBuilder.create().text("Reset").styleClass("refresh").build();
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -63,40 +68,54 @@ public class LoginApplication extends Application {
 		configureScene();
 		configureStage();
 		StackPane s = StackPaneBuilder.create().children(successlbl).build();
-		final VBox successPane = VBoxBuilder.create().children(s, reset).alignment(Pos.CENTER_RIGHT).padding(new Insets(20)).build();
 		VBox.setVgrow(s, Priority.ALWAYS);
 
-		final LoginView login = new LoginView();
-		final RegistrationView registration = new RegistrationView();
-		registration.setOnSuccess(new Callback<User, Void>() {
+		final VBox successView = VBoxBuilder.create().children(s, resetBtn).alignment(Pos.CENTER_RIGHT).padding(new Insets(20)).build();
+		final LoginView loginView = new LoginView();
+		final RegistrationView registrationView = new RegistrationView();
+
+		registrationView.setOnSuccess(new Callback<User, Void>() {
 			@Override
 			public Void call(User paramP) {
-				login.setUser(paramP);
+				loginView.setUser(paramP);
 				contentRoot.getChildren().clear();
-				contentRoot.getChildren().add(login);
+				contentRoot.getChildren().add(loginView);
 				return null;
 			}
 		});
 
-		login.setOnSuccess(new Callback<Void, Void>() {
+		loginView.setOnSuccess(new Callback<Void, Void>() {
 			@Override
 			public Void call(Void p) {
 				contentRoot.getChildren().clear();
-				contentRoot.getChildren().add(successPane);
+				contentRoot.getChildren().add(successView);
 				return null;
 			}
 		});
 
-		reset.setOnAction(new EventHandler<ActionEvent>() {
+		loginView.setOnRegistration(new Callback<Void, Void>() {
 			@Override
-			public void handle(ActionEvent paramT) {
-				registration.reset();
-				login.reset();
+			public Void call(Void p) {
+				registrationView.reset();
+				loginView.reset();
 				contentRoot.getChildren().clear();
-				contentRoot.getChildren().add(registration);
+				contentRoot.getChildren().add(registrationView);
+				return null;
 			}
 		});
-		contentRoot.getChildren().add(registration);
+
+		resetBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent paramT) {
+				registrationView.reset();
+				loginView.reset();
+				contentRoot.getChildren().clear();
+				contentRoot.getChildren().add(registrationView);
+			}
+		});
+
+		// Setting first the registration view.
+		contentRoot.getChildren().add(registrationView);
 	}
 
 }

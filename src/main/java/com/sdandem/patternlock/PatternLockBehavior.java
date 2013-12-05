@@ -5,8 +5,6 @@ import com.sun.javafx.scene.control.behavior.BehaviorBase;
 /**
  * Behavioral implementation class for {@link PatternLockControl} control.
  * 
- * @author Sai.Dandem
- * 
  */
 public class PatternLockBehavior extends BehaviorBase<PatternLockControl> {
 

@@ -1,11 +1,7 @@
-/**
- * 
- */
 package com.sdandem.patternlock.loginapp;
 
 /**
  * Class to hold the user registration details.
- * 
  */
 public class User {
 

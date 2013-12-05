@@ -27,12 +27,16 @@ import javafx.util.Callback;
 
 import com.sdandem.patternlock.PatternLockControl;
 
+/**
+ * View implementation for the registration pane.
+ */
 public class RegistrationView extends VBox {
 
 	private final TextField userName;
 	private final Label pwdLabel;
 	private final PatternLockControl lock;
-	private final Label passwordSetLabel = LabelBuilder.create().text("Password is set").translateY(15).styleClass("tick").visible(false).build();
+	private final Label passwordSetLabel = LabelBuilder.create().text("Password is set").translateY(15).styleClass("tick").visible(false)
+			.build();
 
 	private SimpleStringProperty code1 = new SimpleStringProperty();
 	private SimpleStringProperty code2 = new SimpleStringProperty();
@@ -49,7 +53,7 @@ public class RegistrationView extends VBox {
 		getChildren().add(LabelBuilder.create().text("Registration").styleClass("registration").build());
 
 		userName = TextFieldBuilder.create().build();
-		pwdLabel = LabelBuilder.create().text("Enter the password").translateY(15).styleClass("formLabel").build();
+		pwdLabel = LabelBuilder.create().text("Enter password").translateY(15).styleClass("formLabel").build();
 
 		lock = new PatternLockControl();
 		lock.setPrefSize(200, 200);
@@ -77,7 +81,7 @@ public class RegistrationView extends VBox {
 				.rowConstraints(RowConstraintsBuilder.create().valignment(VPos.TOP).build(),
 						RowConstraintsBuilder.create().valignment(VPos.TOP).build()).build();
 		gp.addRow(0, LabelBuilder.create().text("Enter user name").translateY(4).styleClass("formLabel").build(), userName);
-		gp.addRow(1, pwdLabel, PaneBuilder.create().children(passwordSetLabel,lock).build());
+		gp.addRow(1, pwdLabel, PaneBuilder.create().children(passwordSetLabel, lock).build());
 		VBox.setVgrow(gp, Priority.ALWAYS);
 		reset = ButtonBuilder.create().text("Reset").visible(false).onAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -115,10 +119,10 @@ public class RegistrationView extends VBox {
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String value) {
 				if (value == null || value.isEmpty()) {
 					reset.setVisible(false);
-					pwdLabel.setText("Enter the password");
+					pwdLabel.setText("Enter password");
 				} else {
 					reset.setVisible(true);
-					pwdLabel.setText("Re-Enter the password");
+					pwdLabel.setText("Re-Enter password");
 				}
 			}
 		});
@@ -136,8 +140,8 @@ public class RegistrationView extends VBox {
 			}
 		});
 	}
-	
-	public void reset(){
+
+	public void reset() {
 		userName.clear();
 		lock.clear();
 		code1.set(null);
@@ -147,6 +151,5 @@ public class RegistrationView extends VBox {
 	public void setOnSuccess(Callback<User, Void> onSuccess) {
 		this.onSuccess = onSuccess;
 	}
-	
-	
+
 }

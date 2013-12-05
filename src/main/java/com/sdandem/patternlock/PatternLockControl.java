@@ -9,21 +9,18 @@ import javafx.util.Callback;
 
 /**
  * Pattern lock control implementation.
- * 
- * @author Sai.Dandem
- * 
  */
 public class PatternLockControl extends Control {
 	// Default properties
 	private String DEFAULT_STYLE_CLASS = "pattern-lock";
 	private double DEFAULT_SIZE = 240.0D;
 	private Insets DEFAULT_PADDING = new Insets(10);
-	
+
 	// Configurable properties
 	private PatternSize size;
 	private ObjectProperty<Insets> padding;
 	private Callback<String, Boolean> onPatternDetected;
-	
+
 	/**
 	 * Creates an instance of PatternLockControl with the default {@link #sizeProperty() size}.
 	 */
@@ -67,7 +64,7 @@ public class PatternLockControl extends Control {
 	 * @return An enum property representing the size of the PatternLock control.
 	 */
 	public final void setSize(PatternSize patternSize) {
-		if(getSkin()!=null){
+		if (getSkin() != null) {
 			throw new IllegalStateException("Cannot set pattern size once the control is rendered");
 		}
 		this.size = patternSize;
@@ -120,10 +117,10 @@ public class PatternLockControl extends Control {
 	/**
 	 * Clears the pattern.
 	 */
-	public void clear(){
-		((PatternLockSkin)getSkin()).clearPattern();
+	public void clear() {
+		((PatternLockSkin) getSkin()).clearPattern();
 	}
-	
+
 	/**
 	 * An enumeration denoting the size of the pattern.
 	 */
