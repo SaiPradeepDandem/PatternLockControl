@@ -1,0 +1,52 @@
+/**
+ * 
+ */
+.pattern-lock{
+	 -fx-skin:"com.sdandem.patternlock.PatternLockSkin";
+	 -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+     -fx-background-radius: 15, 15, 14, 13;
+}
+
+.pattern-lock .line{
+	-fx-stroke:#EB7E23 ;
+	-fx-stroke-width:6px;
+	-fx-stroke-line-cap:round;
+	-fx-opacity: 0.6;
+}
+
+.pattern-lock .arrow{
+	-fx-background-color: -fx-mark-color;
+    -fx-shape: "M0,-4L4,0L0,4Z";
+    -fx-opacity: 0.6;
+}
+
+.pattern-lock .mask{
+	-fx-background-color:white;
+	-fx-opacity:0;
+}
+.pattern-lock .outer{
+	-fx-stroke:transparent;
+	-fx-stroke-width:2px;
+	-fx-fill:transparent;
+}
+.pattern-lock .outer-active{
+	-fx-stroke:#7ACC42 !important;
+	-fx-stroke-width:2px;
+	-fx-fill:transparent;
+}
+.pattern-lock .outer-invalid{
+	-fx-stroke:red;
+	-fx-stroke-width:2px;
+	-fx-fill:transparent;
+}
+.pattern-lock .inner{
+	-fx-stroke:gray;
+	-fx-stroke-width:1.5px;
+	-fx-fill:transparent;
+}
+.pattern-lock .inner-active{
+	-fx-stroke:white;
+	-fx-stroke-width:1.5px;
+	-fx-fill:white;
+}
