@@ -247,11 +247,13 @@ public class PatternLockSkin extends SkinBase<PatternLockControl, PatternLockBeh
 		}
 		if (control.getOnPatternDetected() != null) {
 			toggleMask(true);
-			boolean isValid = control.getOnPatternDetected().call(code.toString());
-			if (isValid) {
-				clearPattern();
-			} else {
-				invalid.set(true);
+			Boolean isValid = control.getOnPatternDetected().call(code.toString());
+			if (isValid != null) {
+				if (isValid) {
+					clearPattern();
+				} else {
+					invalid.set(true);
+				}
 			}
 		} else {
 			clearPattern();
