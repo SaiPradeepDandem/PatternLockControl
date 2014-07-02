@@ -39,7 +39,7 @@ public class DefaultPatternLockControlDemo extends Application {
 	private void configureScene() {
 		contentRoot = new StackPane();
 		contentRoot.setAlignment(Pos.CENTER);
-		this.scene = new Scene(contentRoot, Color.LINEN);
+		this.scene = new Scene(contentRoot, Color.WHITE);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class DefaultPatternLockControlDemo extends Application {
 		final Label pwdLabel = new Label();
 
 		PatternLockControl patternLock = new PatternLockControl();
-		patternLock.setPrefSize(210, 210);
+		patternLock.setPrefSize(200, 200);
 		patternLock.setOnPatternDetected(new Callback<String, Boolean>() {
 			@Override
 			public Boolean call(String code) {

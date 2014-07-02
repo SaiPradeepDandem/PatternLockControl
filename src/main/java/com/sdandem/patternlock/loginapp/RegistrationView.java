@@ -43,14 +43,17 @@ public class RegistrationView extends VBox {
 
 	private Button reset;
 	private Button register;
-
+	Label lbl;
+	private SimpleStringProperty str = new SimpleStringProperty("Registration");
 	private Callback<User, Void> onSuccess;
 
 	public RegistrationView() {
 		super();
 		setSpacing(15);
 		getStyleClass().add("form");
-		getChildren().add(LabelBuilder.create().text("Registration").styleClass("registration").build());
+		 lbl  = LabelBuilder.create().styleClass("registration").build();
+		lbl.setText(str.get());
+		getChildren().add(lbl);
 
 		userName = TextFieldBuilder.create().build();
 		pwdLabel = LabelBuilder.create().text("Enter password").translateY(15).styleClass("formLabel").build();
@@ -142,6 +145,7 @@ public class RegistrationView extends VBox {
 	}
 
 	public void reset() {
+		lbl.setText("Hello world");
 		userName.clear();
 		lock.clear();
 		code1.set(null);

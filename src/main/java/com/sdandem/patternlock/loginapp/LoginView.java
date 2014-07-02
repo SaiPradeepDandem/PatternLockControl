@@ -40,9 +40,9 @@ public class LoginView extends VBox {
 		super();
 		setSpacing(15);
 		getStyleClass().add("form");
-		getChildren().add(LabelBuilder.create().text("Login").styleClass("login").build());
+		getChildren().add(LabelBuilder.create().text("Login AA").styleClass("login").build());
 
-		registrationBtn = ButtonBuilder.create().text("Registration").styleClass("refresh").onAction(new EventHandler<ActionEvent>() {
+		registrationBtn = ButtonBuilder.create().text("Registration ad").styleClass("refresh").onAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
 				onRegistration.call(null);
